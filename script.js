@@ -1,7 +1,7 @@
 let codes = [];
 
 // ============================
-// CODES CSV LADEN
+// CSV laden
 // ============================
 fetch("codes.csv")
   .then(r => r.text())
@@ -13,7 +13,7 @@ fetch("codes.csv")
   });
 
 // ============================
-// CODE PRÜFEN
+// Code prüfen
 // ============================
 function check() {
   const input = document.getElementById("input").value.trim();
@@ -24,7 +24,6 @@ function check() {
     return;
   }
 
-  // Treffer?
   if (codes.includes(input)) {
     result.innerHTML = `<span style="color: green;">✔ Code gültig</span>`;
   } else {
@@ -33,17 +32,19 @@ function check() {
 }
 
 // ============================
-// URL AUTO-CHECK
+// URL Auto-Check ?code=XYZ
 // ============================
-//
-// Beispiel:
-// https://thme-now.github.io/qr-checker/?code=123
-//
 const urlParams = new URLSearchParams(window.location.search);
 const urlCode = urlParams.get("code");
 
 if (urlCode) {
-  // In Eingabefeld setzen
   document.getElementById("input").value = urlCode;
 
-  // W
+  // Warten, bis codes.csv geladen ist
+  const wait = setInterval(() => {
+    if (codes.length > 0) {
+      clearInterval(wait);
+      check();
+    }
+  }, 100);
+}
