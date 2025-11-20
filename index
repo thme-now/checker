@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>QR-Code Prüfung</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+
+<h2>QR-Code Check</h2>
+
+<input id="input" type="text" placeholder="Code eingeben oder per URL scannen" />
+<button onclick="check()">Prüfen</button>
+
+<div id="result"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
