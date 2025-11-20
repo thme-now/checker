@@ -7,9 +7,9 @@ fetch("codes.csv")
   .then(r => r.text())
   .then(text => {
     codes = text
-      .split(/\r?\n/)      // in Zeilen zerlegen
-      .map(x => x.trim())  // trimmen
-      .filter(Boolean);    // Leerzeilen entfernen
+      .split(/\r?\n/)      // Zeilen trennen
+      .map(x => x.trim())  // Leerzeichen entfernen
+      .filter(Boolean);    // Leere Zeilen raus
   });
 
 // ============================
@@ -37,19 +37,13 @@ function check() {
 // ============================
 //
 // Beispiel:
-// https://deineseite.de/?code=12345
+// https://DEINNAME.github.io/qr-checker/?code=123
 //
 const urlParams = new URLSearchParams(window.location.search);
 const urlCode = urlParams.get("code");
 
 if (urlCode) {
+  // In Eingabefeld setzen
   document.getElementById("input").value = urlCode;
 
-  // prüfen, aber warten bis CSV geladen ist
-  const wait = setInterval(() => {
-    if (codes.length > 0) {
-      clearInterval(wait);
-      check();
-    }
-  }, 100);
-}
+  // W
