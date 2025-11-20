@@ -37,7 +37,7 @@ function check() {
 // ============================
 //
 // Beispiel:
-// https://DEINNAME.github.io/qr-checker/?code=123
+// https://thme-now.github.io/qr-checker/?code=123
 //
 const urlParams = new URLSearchParams(window.location.search);
 const urlCode = urlParams.get("code");
